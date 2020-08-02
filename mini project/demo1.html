@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Javascript Stopwatch</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="timerContainer">
+<div class="timer" onclick="startTimer()">Start Timer!</div>
+<div class="startTimer reset" onclick="startTimer()" >
+    <i class="fas fa-play"></i>
+  </div>
+<div class="pauseTimer reset" onclick="pauseTimer()" >
+    <i class="fas fa-pause"></i>
+  </div>
+<div class="resetTimer reset" onclick="resetTimer()">Reset</div>
+</div>
+<script type="text/javascript" src="first.js"></script>
+
+<div id="safeTimer">
+    <h2>Safe Timer</h2>
+    <p id="safeTimerDisplay"></p>
+    </div>
+    
+    <script>
+    var myVar = setInterval(function(){ myTimer() }, 1000);
+    var secondlimit = prompt("enter time in seconds");
+    
+    function myTimer() {
+    if(secondlimit == 0)
+    {
+        myStopFunction();
+    }
+    
+    document.getElementById("safeTimerDisplay").innerHTML = '00:' + zeroPad(secondlimit,2);
+    secondlimit = secondlimit  - 1;
+    
+    }
+    
+    function myStopFunction() {
+        clearInterval(myVar);
+    }
+    
+    function zeroPad(num, places) {
+      var zero = places - num.toString().length + 1;
+      return Array(+(zero > 0 && zero)).join("0") + num;
+    }
+    
+    </script>
+</body>
+</html>
